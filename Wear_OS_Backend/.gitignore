@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Model file (large binary – store in cloud storage or share separately)
+*.h5
+*.pkl
+
+# Firebase service account – NEVER commit this file
+serviceAccountKey.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,7 @@
+flask
+flask-cors
+numpy
+scikit-learn      # required for Stage 2+ (.pkl model loading)
+joblib            # common alternative for pkl models
+firebase-admin    # required for Stage 3+ (Firestore)
+python-dotenv     # for environment variables (.env)

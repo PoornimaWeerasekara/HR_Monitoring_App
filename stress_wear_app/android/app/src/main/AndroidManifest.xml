@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ── Permissions ─────────────────────────────────────────────────── -->
+
+    <!-- Heart-rate sensor access -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
+    <!-- Internet – required to reach the Flask backend -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Feature declarations – marks this as a Wear OS app -->
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <!-- ── Application ────────────────────────────────────────────────── -->
+    <application
+        android:label="Stress Wear"
+        android:icon="@mipmap/ic_launcher"
+
+        <!--
+            usesCleartextTraffic = true is REQUIRED for local Flask testing
+            (http:// not https://).  Remove this line once you switch to a
+            deployed HTTPS backend.
+        -->
+        android:usesCleartextTraffic="true"
+
+        android:theme="@style/LaunchTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- Wear OS intent filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Flutter metadata (required) -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+    </application>
+
+</manifest>

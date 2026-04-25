@@ -1,0 +1,32 @@
+name: stress_wear_app
+description: Galaxy Watch 5 Pro stress detection app powered by HRV analysis.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # HTTP client – used to POST HRV features to the Flask API
+  http: ^1.2.2
+
+  # Runtime permission requests (BODY_SENSORS, etc.)
+  permission_handler: ^11.3.1
+
+  # Accelerometer / gyroscope / (limited) heart-rate on some platforms
+  # Real HR on Galaxy Watch requires a Platform Channel → MainActivity.kt
+  sensors_plus: ^6.0.1
+
+  # Date / time formatting helper
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

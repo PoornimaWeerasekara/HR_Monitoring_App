@@ -1,0 +1,28 @@
+# Secrets
+serviceAccountKey.json
+.env
+*.pkl
+*.h5
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+
+# Flutter/Dart
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache
+.pub/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
