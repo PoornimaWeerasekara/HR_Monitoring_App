@@ -41,7 +41,7 @@ print(f"[INFO] Model loaded successfully from {MODEL_PATH}")
 
 # ── Stage 3+: Firebase initialisation ───────────────────────────────────────
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, db as firebase_db
 
 # Point to the JSON file you just provided
 FIREBASE_KEY_PATH = os.getenv("FIREBASE_KEY_PATH", "serviceAccountKey.json")
@@ -52,8 +52,7 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': FIREBASE_DB_URL
 })
 
-db = firestore.client()
-print("[INFO] Firebase Firestore connected successfully.")
+print("[INFO] Firebase Realtime Database connected successfully.")
 # ────────────────────────────────────────────────────────────────────────────
 
 app = Flask(__name__)
@@ -146,7 +145,7 @@ def predict():
 
     result = {"label": label, "confidence": probability}
 
-    # ── Stage 3+: Firestore persistence ─────────────────────────────────────
+    # ── Stage 3+: Firebase persistence ─────────────────────────────────────
     try:
         save_data = {
             "user_id": user_id,
@@ -154,10 +153,10 @@ def predict():
             "features": features,
             "prediction": result,
         }
-        # Saves to the 'stress_predictions' collection
-        db.collection("stress_predictions").add(save_data)
+        # Saves to the 'stress_predictions' node in Realtime Database
+        firebase_db.reference("stress_predictions").push(save_data)
     except Exception as e:
-        print(f"[ERROR] Failed to save to Firestore: {e}")
+        print(f"[ERROR] Failed to save to Firebase Realtime Database: {e}")
     # ────────────────────────────────────────────────────────────────────────
 
     return jsonify({"status": "success", "prediction": result})

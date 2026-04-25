@@ -9,13 +9,13 @@ class AppConstants {
   /// Change this to your laptop's IP when testing on a real watch.
   /// Example: 'http://192.168.1.8:5000'
   /// DO NOT use 'localhost' on a physical device.
-  static const String flaskBaseUrl = 'http://10.0.2.2:5005'; // emulator default
+  static const String flaskBaseUrl = 'http://192.168.8.104:5005'; // your laptop's Wi-Fi IP
 
   // ── User ─────────────────────────────────────────────────────────────────
   /// Hard-coded user ID for early development.  Replace with real auth later.
   static const String defaultUserId = 'student_001';
 
-  // ── Thresholds ────────────────────────────────────────────────────────────
+  // ── Thresholds ────────────────────────────────────────────────────────────.
   /// Minimum valid heart-rate reading (bpm).
   static const double minValidHr = 40.0;
 
