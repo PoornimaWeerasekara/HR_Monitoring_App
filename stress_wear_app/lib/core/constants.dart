@@ -13,7 +13,7 @@ class AppConstants {
 
   // ── User ─────────────────────────────────────────────────────────────────
   /// Hard-coded user ID for early development.  Replace with real auth later.
-  static const String defaultUserId = 'student_001';
+  static const String defaultUserId = 'student_001_test';
 
   // ── Thresholds ────────────────────────────────────────────────────────────.
   /// Minimum valid heart-rate reading (bpm).

@@ -13,7 +13,10 @@ class ApiService {
   /// POSTs HRV features to [_baseUrl]/predict and returns a [StressResponse].
   ///
   /// Throws [Exception] on non-200 responses or network errors.
-  Future<StressResponse> predictStress(StressRequest request, {double heartRate = 0.0}) async {
+  Future<StressResponse> predictStress(StressRequest request, {
+    double heartRate = 0.0,
+    Map<String, double> features = const {},
+  }) async {
     final url = Uri.parse('$_baseUrl/predict');
 
     final http.Response response;
@@ -31,7 +34,7 @@ class ApiService {
 
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as Map<String, dynamic>;
-      return StressResponse.fromJson(json, heartRate: heartRate);
+      return StressResponse.fromJson(json, heartRate: heartRate, features: features);
     } else {
       throw Exception(
         'Prediction failed [${response.statusCode}]: ${response.body}',

@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen>
                 const SizedBox(height: 10),
                 const Text('VitaSense', style: AppTheme.heading),
                 const Text(
-                  'HR Checker',
+                  'STRESS CHECK',
                   style: TextStyle(
                     fontSize: 10,
                     color: Colors.white54,

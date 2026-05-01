@@ -22,49 +22,78 @@ class ResultScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppTheme.surfaceDark,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // ── Heart Rate Value ──────────────────────────────────────────────
-              Text(
-                result.heartRateString,
-                style: const TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.stressRed,
-                ),
-              ),
-              const Text(
-                'BPM',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white54,
-                  letterSpacing: 2,
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              // ── Back button ───────────────────────────────────────────────
-              OutlinedButton(
-                onPressed: () => Navigator.pop(context),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white70,
-                  side: const BorderSide(color: Colors.white24),
-                  shape: const StadiumBorder(),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 8,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // ── Heart Rate Value ──────────────────────────────────────────────
+                Text(
+                  result.heartRateString,
+                  style: const TextStyle(
+                    fontSize: 55,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-                child: const Text('Back'),
-              ),
-            ],
+                const Text(
+                  'BPM',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white54,
+                    letterSpacing: 2,
+                  ),
+                ),
+                const SizedBox(height: 12),
+
+                const SizedBox(height: 30),
+
+                // ── Back button ───────────────────────────────────────────────
+                OutlinedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.white70,
+                    side: const BorderSide(color: Colors.white24),
+                    shape: const StadiumBorder(),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 10,
+                    ),
+                  ),
+                  child: const Text('BACK'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildFeatureRow(String label, String value) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+            color: Colors.white54,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          value,
+          style: const TextStyle(
+            fontSize: 12,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'monospace',
+          ),
+        ),
+      ],
     );
   }
 }
