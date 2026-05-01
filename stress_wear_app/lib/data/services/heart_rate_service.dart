@@ -5,9 +5,7 @@ import 'package:flutter/services.dart';
 ///
 /// Stage 1 – Dummy values
 /// ----------------------
-/// [getDummyHeartRates] returns a fixed list for early development and
-/// Postman-equivalent testing without a real watch.
-///
+/// [getDummyHeartRates] r
 /// Stage 2 – Real sensor (Kotlin side)
 /// ------------------------------------
 /// Uncomment [getHeartRateSamples] and implement the corresponding Kotlin
@@ -34,16 +32,23 @@ class HeartRateService {
   }
 
   // ── Stage 2: Real sensor (Platform Channel) ───────────────────────────────
-  // Uncomment the method below once the Kotlin MainActivity is set up.
-  //
-  // /// Calls the native Android SensorManager and returns live HR samples.
-  // Future<List<double>> getHeartRateSamples() async {
-  //   try {
-  //     final List<dynamic> raw =
-  //         await _channel.invokeMethod('getHeartRateSamples');
-  //     return raw.map((v) => (v as num).toDouble()).toList();
-  //   } on PlatformException catch (e) {
-  //     throw Exception('Heart rate sensor error: ${e.message}');
-  //   }
-  // }
+  /// Calls the native Android SensorManager and returns live HR samples.
+  Future<List<double>> getHeartRateSamples() async {
+    try {
+      final List<dynamic> raw =
+          await _channel.invokeMethod('getHeartRateSamples');
+      return raw.map((v) => (v as num).toDouble()).toList();
+    } on PlatformException catch (e) {
+      throw Exception('Heart rate sensor error: ${e.message}');
+    }
+  }
+
+  /// Opens the native Samsung Health heart rate measurement screen.
+  Future<void> openInbuiltMonitor() async {
+    try {
+      await _channel.invokeMethod('openInbuiltMonitor');
+    } on PlatformException catch (e) {
+      throw Exception('Could not open inbuilt monitor: ${e.message}');
+    }
+  }
 }

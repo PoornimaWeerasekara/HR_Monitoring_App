@@ -25,6 +25,6 @@ class StressRepository {
       features: features,
     );
 
-    return _api.predictStress(request);
+    return _api.predictStress(request, heartRate: features['mean_hr'] ?? 0.0);
   }
 }

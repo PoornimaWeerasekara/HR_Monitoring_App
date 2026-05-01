@@ -17,7 +17,7 @@ class AppConstants {
 
   // ── Thresholds ────────────────────────────────────────────────────────────.
   /// Minimum valid heart-rate reading (bpm).
-  static const double minValidHr = 40.0;
+  static const double minValidHr = 30.0;
 
   /// Maximum valid heart-rate reading (bpm).
   static const double maxValidHr = 200.0;

@@ -12,7 +12,7 @@ class StressWearApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Stress Wear',
+      title: 'VitaSense HR Checker',
       theme: ThemeData.dark().copyWith(
         colorScheme: const ColorScheme.dark(
           primary: Color(0xFF7C4DFF),

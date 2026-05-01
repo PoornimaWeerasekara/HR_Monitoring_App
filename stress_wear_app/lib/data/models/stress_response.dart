@@ -6,29 +6,29 @@ class StressResponse {
   /// Model confidence score in the range [0.0, 1.0].
   final double confidence;
 
+  /// The average heart rate measured during the sample period.
+  final double measuredHeartRate;
+
   const StressResponse({
     required this.label,
     required this.confidence,
+    required this.measuredHeartRate,
   });
 
   /// Deserialises the Flask API response JSON.
-  ///
-  /// Expected shape:
-  /// ```json
-  /// {
-  ///   "status": "success",
-  ///   "prediction": { "label": "stressed", "confidence": 0.87 }
-  /// }
-  /// ```
-  factory StressResponse.fromJson(Map<String, dynamic> json) {
+  factory StressResponse.fromJson(Map<String, dynamic> json, {double heartRate = 0.0}) {
     final prediction = json['prediction'] as Map<String, dynamic>;
     return StressResponse(
       label: prediction['label'] as String,
       confidence: (prediction['confidence'] as num).toDouble(),
+      measuredHeartRate: heartRate,
     );
   }
 
   bool get isStressed => label == 'stressed';
+
+  /// Heart rate as a whole number string, e.g. "78".
+  String get heartRateString => measuredHeartRate.toStringAsFixed(0);
 
   /// Confidence as a human-readable percentage string, e.g. "87.3%".
   String get confidencePercent =>

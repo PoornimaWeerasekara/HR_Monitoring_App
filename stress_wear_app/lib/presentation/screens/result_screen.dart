@@ -28,22 +28,22 @@ class ResultScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // ── Status icon ───────────────────────────────────────────────
-              Icon(statusIcon, color: statusColor, size: 40),
-              const SizedBox(height: 8),
-
-              // ── Label ─────────────────────────────────────────────────────
+              // ── Heart Rate Value ──────────────────────────────────────────────
               Text(
-                statusText,
-                style: AppTheme.heading.copyWith(color: statusColor),
-                textAlign: TextAlign.center,
+                result.heartRateString,
+                style: const TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.stressRed,
+                ),
               ),
-              const SizedBox(height: 6),
-
-              // ── Confidence ────────────────────────────────────────────────
-              Text(
-                'Confidence: ${result.confidencePercent}',
-                style: AppTheme.body,
+              const Text(
+                'BPM',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white54,
+                  letterSpacing: 2,
+                ),
               ),
               const SizedBox(height: 16),
 

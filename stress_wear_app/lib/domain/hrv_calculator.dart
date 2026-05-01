@@ -27,7 +27,7 @@ class HrvCalculator {
     final valid = heartRates
         .where(
           (hr) =>
-              hr >= AppConstants.minValidHr && hr <= AppConstants.maxValidHr,
+              hr > 0 && hr >= AppConstants.minValidHr && hr <= AppConstants.maxValidHr,
         )
         .toList();
 
